@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BiliBiliMaui.Views.BilibiliScriptsPage"
+             xmlns:vm="clr-namespace:BiliBiliMaui.ViewModels"
+             xmlns:models="clr-namespace:BiliBiliMaui.Models"
+             Title="BilibiliScriptsPage" x:DataType="vm:VideosModelViews">
+    <ScrollView>
+        <VerticalStackLayout>
+         <Entry Text="{Binding Url}"  />
+         <Image x:Name="Image"
+         Source="{Binding Videoframe}"
+         Aspect="AspectFit"
+          SemanticProperties.Description="dot net bot in a race car number eight" />
+         <Button
+         Text="预览" 
+         x:Name="GetButton"
+         SemanticProperties.Hint="Counts the number of times you click"
+         Clicked="OnCounterClicked"
+         HorizontalOptions="Fill" />
+         <Button
+         Text="下载" 
+         x:Name="down"
+         SemanticProperties.Hint="Counts the number of times you click"
+         Clicked="Download"
+         HorizontalOptions="Fill" IsEnabled="False" IsVisible="False" />
+            <CollectionView x:Name="CollectionView" ItemsSource="{Binding HD}" SelectionMode="Single" HeightRequest="100" >
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="models:Support_Formats">
+                        <StackLayout>
+                            <Label Text="{Binding new_description}" FontSize="14" />
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+            <ProgressBar x:Name="ProgressBar" IsVisible="true"  Progress="{Binding Progress}" HeightRequest="100" />
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

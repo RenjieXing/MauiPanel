@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="BiliBiliMaui.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:BiliBiliMaui"
+    Shell.FlyoutBehavior="Disabled"
+     xmlns:views="clr-namespace:BiliBiliMaui.Views"
+    Title="BiliBiliMaui" x:Name="Shell">
+
+    <FlyoutItem IsVisible="True" CompressedLayout.IsHeadless="True">
+        <ShellContent Title="BiBil登录页面" 
+         ContentTemplate="{DataTemplate views:BilibiliScriptsPage}" 
+         Route="BilibiliScriptsPage" />
+
+
+
+    </FlyoutItem>
+
+</Shell>
