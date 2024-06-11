@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiPanel.Views.UnsafeAccessorView"
+             xmlns:ViewModels="clr-namespace:MauiPanel.ViewModels;assembly=MauiPanel"
+              Title="UnsafeAccess特性展示" x:DataType="ViewModels:UnsafeAccessViewModel">
+    <VerticalStackLayout>
+        <Label  Text="UnsafeAccess特性展示(由于缓存命中机制,请多次点击按钮查看稳定后结果)"  VerticalTextAlignment="Center" HorizontalOptions="Center" Padding="50,5,5,5" />
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="15*" />
+                <RowDefinition Height="15*" />
+                <RowDefinition Height="15*" />
+                <RowDefinition Height="15*" />
+                <RowDefinition Height="15*" />
+                <RowDefinition Height="15*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="50*"/>
+                <ColumnDefinition Width="50*" />
+            </Grid.ColumnDefinitions>
+            <Button x:Name="showButton"  
+                   Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Text="显示(显示名称后则测试软件无误" Padding="10,5,5,5" Margin="10,10,10,10"
+                 Clicked="ShowButton_Clicked"/>
+            <Label  Grid.Row="1"  Grid.Column="0" Text="名称:" Padding="50,5,5,5" />
+            <Label  Grid.Row="1"  Grid.Column="1" Text="{Binding Name}" Padding="5,5,5,5"  />
+            <Label  Grid.Row="2"  Grid.Column="0" Text="年龄:" Padding="50,5,5,5"/>
+            <Label  Grid.Row="2"  Grid.Column="1" Text="{Binding Age}"  Padding="5,5,5,5" />
+            <Label  Grid.Row="3"  Grid.Column="0" Text="指针直接耗时:" Padding="50,5,5,5" />
+            <Label  Grid.Row="3"  Grid.Column="1" Text="{Binding UnsafeAccessorSpnedTime}"  Padding="5,5,5,5" />
+            <Label  Grid.Row="4"  Grid.Column="0" Text="托管指针方法间接耗时:" Padding="50,5,5,5" />
+            <Label  Grid.Row="4"  Grid.Column="1" Text="{Binding UnsafeAccessorMethodSpnedTime}"  Padding="5,5,5,5" />
+            <Label  Grid.Row="5"  Grid.Column="0" Text="反射耗时:" Padding="50,5,5,5" />
+            <Label  Grid.Row="5"  Grid.Column="1" Text="{Binding ReflexSpnedTime}"  Padding="5,5,5,5" />
+            <Label  Grid.Row="6"  Grid.Column="0" Text="反射方法间接耗时:" Padding="50,5,5,5" />
+            <Label  Grid.Row="6"  Grid.Column="1" Text="{Binding ReflexMethodSpnedTime}"  Padding="5,5,5,5" />
+        </Grid>
+
+        <Button  x:Name="refButton"             Text="以引用指针方式直接访问地址"        Padding="10,5,5,5" Margin="10,10,10,10"  Clicked="RefButton_Clicked" />
+        <Button  x:Name="pointerButton"         Text="以托管指针方式访问方法间接改变值"  Padding="10,5,5,5" Margin="10,10,10,10"  Clicked="PointerButton_Clicked" />
+        <Button  x:Name="reflexButton"          Text="以反射访问值"                      Padding="10,5,5,5" Margin="10,10,10,10"  Clicked="reflexButton_Clicked" />
+        <Button  x:Name="reflexMethodButton"    Text="以反射访问方法改变值"              Padding="10,5,5,5" Margin="10,10,10,10"  Clicked="reflexMethodButton_Clicked" />
+        <Entry  x:Name="entry" Placeholder="输入值以更改年龄" Text="" TextChanged="Entry_TextChanged"/>
+    </VerticalStackLayout>
+</ContentPage>
